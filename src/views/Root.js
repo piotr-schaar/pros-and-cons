@@ -3,16 +3,20 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import routes from 'routes';
 import { AppProvider } from 'context/App.context';
 import SubjectView from 'views/SubjectView';
+import MainView from 'views/MainView';
+import MainTemplate from '../templates/Main.template';
 
 const Root = () => {
   return (
     <AppProvider>
       <Router>
-        <Switch>
-          <Route exact path={routes.home} render={() => <Redirect to={routes.subject} />} />
-          <Route path={routes.subject} component={SubjectView} />
-          <Route path={routes.subject} component={SubjectView} />
-        </Switch>
+        <MainTemplate>
+          <Switch>
+            <Route exact path={routes.home} render={() => <Redirect to={routes.subject} />} />
+            <Route path={routes.subject} component={SubjectView} />
+            <Route path={routes.main} component={MainView} />
+          </Switch>
+        </MainTemplate>
       </Router>
     </AppProvider>
   );

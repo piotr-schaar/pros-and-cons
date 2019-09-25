@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react';
+import { Redirect } from 'react-router-dom';
 import { AppContext } from 'context/App.context';
 
 const SubjectView = () => {
@@ -9,9 +10,11 @@ const SubjectView = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setStore({ ...store, subject: textValue });
+    setStore({ ...store, subject: textValue, isSubSelected: true });
   };
-  console.log(store);
+
+  if (store.isSubSelected) return <Redirect to="/main" />;
+
   return (
     <div>
       <h1>subject</h1>
