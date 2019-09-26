@@ -95,62 +95,64 @@ const MainView = () => {
 
   return (
     <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>
-    <Card>
-      <MainWrapper>
-        <SubjectHeading as="h3">
-          <span>{store.subject}</span>
-        </SubjectHeading>
-        <GridWrapper>
-          <GridItem>
-            <Form onSubmit={handleSubmit} name="pros">
-              <BoxInput
-                name="title"
-                value={newPro.title}
-                onChange={handleProChange}
-                type="text"
-                placeholder="type here..."
-              />
-              <Select
-                value={newPro.value}
-                handleChange={handleProChange}
-                name="value"
-                options={4}
-              />
-              <Button hidden type="submit" />
-            </Form>
-            <List>
-              {store.pros.map(item => (
-                <ListItem key={item.title} item={item} />
-              ))}
-            </List>
-          </GridItem>
+      <Card>
+        <MainWrapper>
+          <SubjectHeading as="h3">
+            <span>{store.subject}</span>
+          </SubjectHeading>
+          <GridWrapper>
+            <GridItem>
+              <Form onSubmit={handleSubmit} name="pros">
+                <BoxInput
+                  name="title"
+                  value={newPro.title}
+                  onChange={handleProChange}
+                  type="text"
+                  autocomplete="off"
+                  placeholder="type here..."
+                />
+                <Select
+                  value={newPro.value}
+                  handleChange={handleProChange}
+                  name="value"
+                  options={4}
+                />
+                <Button hidden type="submit" />
+              </Form>
+              <List>
+                {store.pros.map(item => (
+                  <ListItem key={item.title} item={item} />
+                ))}
+              </List>
+            </GridItem>
 
-          <GridItem>
-            <Form onSubmit={handleSubmit} name="cons">
-              <BoxInput
-                name="title"
-                value={newCon.title}
-                onChange={handleConChange}
-                type="text"
-                placeholder="type here..."
-              />
-              <Select
-                value={newCon.value}
-                handleChange={handleConChange}
-                name="value"
-                options={4}
-              />
-              <Button hidden type="submit" />
-            </Form>
-            <List>
-              {store.cons.map(item => (
-                <ListItem key={item.title} item={item} />
-              ))}
-            </List>
-          </GridItem>
-        </GridWrapper>
-      </MainWrapper>
-    </Card>
+            <GridItem>
+              <Form onSubmit={handleSubmit} name="cons">
+                <BoxInput
+                  name="title"
+                  value={newCon.title}
+                  onChange={handleConChange}
+                  autocomplete="off"
+                  type="text"
+                  placeholder="type here..."
+                />
+                <Select
+                  value={newCon.value}
+                  handleChange={handleConChange}
+                  name="value"
+                  options={4}
+                />
+                <Button hidden type="submit" />
+              </Form>
+              <List>
+                {store.cons.map(item => (
+                  <ListItem key={item.title} item={item} />
+                ))}
+              </List>
+            </GridItem>
+          </GridWrapper>
+        </MainWrapper>
+      </Card>
     </Animation>
   );
 };
