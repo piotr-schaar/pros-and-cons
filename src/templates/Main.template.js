@@ -10,12 +10,15 @@ const WrapperStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 const Main = ({ children }) => (
   <ThemeProvider theme={theme}>
     <GlobalStyle />
-    <WrapperStyled>{children}</WrapperStyled>
+    <WrapperStyled>
+      {children}
+    </WrapperStyled>
   </ThemeProvider>
 );
 

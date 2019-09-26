@@ -7,6 +7,7 @@ import Input from "components/atoms/Input";
 import Form from "components/atoms/Form";
 import Button from "components/atoms/Button";
 import Animation from "components/organisms/Animation";
+import Logo from "../components/atoms/Logo";
 
 const SubjectView = () => {
   const [store, setStore] = useContext(AppContext);
@@ -33,7 +34,8 @@ const SubjectView = () => {
   if (store.isSubSelected) return <Redirect to="/main" />;
   return (
     <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>
-      <Card>
+      <Logo />
+      <Card p={40}>
         <Heading pb={20}>What&apos;s your problem?</Heading>
         <Form onSubmit={handleSubmit}>
           <Input

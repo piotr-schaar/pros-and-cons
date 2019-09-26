@@ -1,18 +1,17 @@
-import React from "react";
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 const types = {
-  fadeInOut: "fadeInOut"
+  fadeInOut: 'fadeInOut',
 };
 
 const FadeAnimated = styled.div`
   position: relative;
   transform: translateX(0);
   opacity: 0;
-  transition: all ${({ transition }) => (transition ? `${transition}s` : "2s")}
-    ease-in-out;
+  transition: all ${({ transition }) => (transition ? `${transition}s` : '2s')} ease-in-out;
 
   ${({ toggle }) =>
     toggle &&
@@ -41,10 +40,9 @@ const Animation = ({ type, toggle, duration, children }) => {
 };
 
 Animation.propTypes = {
-    type: PropTypes.string.isRequired,
-    duration: PropTypes.number.isRequired,
-    children: PropTypes.element.isRequired
-}
-
+  type: PropTypes.string.isRequired,
+  duration: PropTypes.number.isRequired,
+  children: PropTypes.element.isRequired,
+};
 
 export default Animation;

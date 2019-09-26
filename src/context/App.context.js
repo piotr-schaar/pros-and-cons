@@ -4,7 +4,7 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [store, setStore] = useState({
-    subject: '',
+    subject: 'Buy a cat',
     isSubSelected: false,
     pros: [
       {
