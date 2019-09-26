@@ -5,7 +5,7 @@ const Heading = styled.h1`
   padding: 0;
   font-size: ${({ theme, big }) => (big ? theme.fontSize.xl : theme.fontSize.l)};
   font-weight: ${({ theme }) => theme.bold};
-  padding-bottom: ${({ pb }) => (pb ? `${pb}px` : 0)};
+  padding-top: ${({ pt }) => (pt ? `${pt}px` : 0)};
 `;
 
 export default Heading;

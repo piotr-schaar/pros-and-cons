@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Redirect } from "react-router-dom";
+import styled from 'styled-components'
 import { AppContext } from "context/App.context";
 import Heading from "components/atoms/Heading";
 import Card from "components/molecules/Card";
@@ -8,6 +9,12 @@ import Form from "components/atoms/Form";
 import Button from "components/atoms/Button";
 import Animation from "components/organisms/Animation";
 import Logo from "../components/atoms/Logo";
+
+const FlexWrapper = styled.div`
+  display:flex;
+  flex-direction: column;
+`
+
 
 const SubjectView = () => {
   const [store, setStore] = useContext(AppContext);
@@ -36,17 +43,15 @@ const SubjectView = () => {
     <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>
       <Logo />
       <Card p={40}>
-        <Heading pb={20}>What&apos;s your problem?</Heading>
         <Form onSubmit={handleSubmit}>
-          <Input
-            name="name"
-            type="text"
-            value={textValue}
-            onChange={handleChange}
-          />
-          <Button hidden type="submit">
-            Submit
-          </Button>
+          <FlexWrapper>
+            <Heading>Is</Heading>
+            <Input name="name" type="text" value={textValue} onChange={handleChange} />
+            <Button hidden type="submit">
+              Submit
+            </Button>
+            <Heading pt={20}>worth it?</Heading>
+          </FlexWrapper>
         </Form>
       </Card>
     </Animation>

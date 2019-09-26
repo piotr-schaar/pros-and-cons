@@ -1,6 +1,7 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { AppContext } from 'context/App.context';
+import Animation from 'components/organisms/Animation';
 import Card from 'components/molecules/Card';
 import Heading from 'components/atoms/Heading';
 import ListItem from 'components/organisms/ListItem';
@@ -51,6 +52,8 @@ const List = styled.ul`
 `;
 
 const MainView = () => {
+    const [redirect, setRedirect] = useState(null);
+    const transitionDuration = 1;
   const [store, setStore] = useContext(AppContext);
   const [newPro, setNewPro] = useState({
     title: '',
@@ -60,6 +63,12 @@ const MainView = () => {
     title: '',
     value: 1,
   });
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRedirect(false);
+    }, transitionDuration * 500);
+  }, []);
 
   const handleProChange = e => {
     setNewPro({
@@ -85,6 +94,7 @@ const MainView = () => {
   };
 
   return (
+    <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>
     <Card>
       <MainWrapper>
         <SubjectHeading as="h3">
@@ -141,6 +151,7 @@ const MainView = () => {
         </GridWrapper>
       </MainWrapper>
     </Card>
+    </Animation>
   );
 };
 
