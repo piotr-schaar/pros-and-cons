@@ -21,6 +21,7 @@ const SubjectView = () => {
   const [textValue, setTextValue] = useState("");
   const [redirect, setRedirect] = useState(null);
 
+
   const transitionDuration = 1;
   useEffect(() => {
     setTimeout(() => {

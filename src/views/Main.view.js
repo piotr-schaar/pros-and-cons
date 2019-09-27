@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { AppContext } from 'context/App.context';
+import useWorths from 'hooks/useWorths';
 import Animation from 'components/organisms/Animation';
 import Card from 'components/molecules/Card';
 import Heading from 'components/atoms/Heading';
@@ -52,8 +53,8 @@ const List = styled.ul`
 `;
 
 const MainView = () => {
-    const [redirect, setRedirect] = useState(null);
-    const transitionDuration = 1;
+  const [redirect, setRedirect] = useState(null);
+  const transitionDuration = 1;
   const [store, setStore] = useContext(AppContext);
   const [newPro, setNewPro] = useState({
     title: '',
@@ -63,6 +64,8 @@ const MainView = () => {
     title: '',
     value: 1,
   });
+
+  const result = useWorths(store.pros, store.cons);
 
   useEffect(() => {
     setTimeout(() => {
@@ -92,7 +95,6 @@ const MainView = () => {
       [name]: [...store[name], newItem],
     });
   };
-
   return (
     <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>
       <Card>
@@ -150,6 +152,7 @@ const MainView = () => {
                 ))}
               </List>
             </GridItem>
+            {result}
           </GridWrapper>
         </MainWrapper>
       </Card>
