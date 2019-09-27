@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
 import styled from 'styled-components';
 import { AppContext } from 'context/App.context';
 import useWorths from 'hooks/useWorths';
@@ -28,8 +29,7 @@ const SubjectHeading = styled(Heading)`
 `;
 
 const MainWrapper = styled.div`
-  min-height: 80vh;
-  width: 700px;
+  min-height: 60vh;
 `;
 
 const BoxInput = styled(Input)`
@@ -38,11 +38,12 @@ const BoxInput = styled(Input)`
 `;
 
 const GridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
 `;
 
-const GridItem = styled.div``;
+const GridItem = styled.div`
+  flex-basis: 50%;
+`;
 
 const List = styled.ul`
   display: flex;
@@ -50,6 +51,11 @@ const List = styled.ul`
   list-style: none;
   padding: 0;
   align-items: center;
+`;
+
+const ButtonWrapper = styled.div`
+  text-align: center;
+  align-self: flex-end;
 `;
 
 const MainView = () => {
@@ -94,10 +100,24 @@ const MainView = () => {
       ...store,
       [name]: [...store[name], newItem],
     });
+    return name === 'pros'
+      ? setNewPro({ title: '', value: 1 })
+      : setNewCon({ title: '', value: 1 });
   };
+
+  const redirectToScore = () => {
+    setTimeout(() => {
+      setRedirect(true);
+      setStore({ ...store, winner: result });
+    }, transitionDuration * 1000);
+  };
+
+  if (store.winner) return <Redirect to="/winner" />;
+
   return (
     <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>
       <Card>
+        {store.winner}
         <MainWrapper>
           <SubjectHeading as="h3">
             <span>{store.subject}</span>
@@ -152,9 +172,11 @@ const MainView = () => {
                 ))}
               </List>
             </GridItem>
-            {result}
           </GridWrapper>
         </MainWrapper>
+        <ButtonWrapper>
+          <Button onClick={redirectToScore}>Check</Button>
+        </ButtonWrapper>
       </Card>
     </Animation>
   );

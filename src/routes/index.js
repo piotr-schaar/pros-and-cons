@@ -1,7 +1,8 @@
 const routes = {
   home: '/',
   subject: '/subject',
-  main: '/main'
+  main: '/main',
+  winner: '/winner'
 };
 
 export default routes;

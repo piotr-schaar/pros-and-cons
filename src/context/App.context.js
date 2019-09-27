@@ -8,6 +8,7 @@ export const AppProvider = ({ children }) => {
     isSubSelected: false,
     pros: [],
     cons: [],
+    winner: ''
   });
 
   return <AppContext.Provider value={[store, setStore]}>{children}</AppContext.Provider>;
