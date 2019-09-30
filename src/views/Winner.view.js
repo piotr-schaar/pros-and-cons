@@ -19,6 +19,7 @@ const ResultView = () => {
   const transitionDuration = 1;
 
   const [store] = useContext(AppContext);
+  
   useEffect(() => {
     setTimeout(() => {
       setRedirect(false);
@@ -26,6 +27,7 @@ const ResultView = () => {
   }, []);
 
   if(store.winner === '') return <Redirect to="/subject" />
+
 
   return (
     <Animation type="fadeInOut" toggle={redirect} duration={transitionDuration}>

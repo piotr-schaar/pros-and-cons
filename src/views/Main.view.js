@@ -59,8 +59,6 @@ const ButtonWrapper = styled.div`
 `;
 
 const MainView = () => {
-  const [redirect, setRedirect] = useState(null);
-  const transitionDuration = 1;
   const [store, setStore] = useContext(AppContext);
   const [newPro, setNewPro] = useState({
     title: '',
@@ -70,7 +68,8 @@ const MainView = () => {
     title: '',
     value: 1,
   });
-
+  const [redirect, setRedirect] = useState(null);
+  const transitionDuration = 1;
   const result = useWorths(store.pros, store.cons);
 
   useEffect(() => {
@@ -106,8 +105,8 @@ const MainView = () => {
   };
 
   const redirectToScore = () => {
+    setRedirect(true);
     setTimeout(() => {
-      setRedirect(true);
       setStore({ ...store, winner: result });
     }, transitionDuration * 1000);
   };
